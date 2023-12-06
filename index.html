@@ -12,6 +12,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="./css/login.css" />
+    <link rel="stylesheet" href="./css/form.css" />
 
     <!-- jQuery  -->
     <script src="js/lib/jquery-2.1.4.js"></script>
@@ -27,12 +28,14 @@
     <script src="js/facade.js"></script>
     <script src="js/global.js"></script>
     <script src="js/util.js"></script>
+
+    <!-- Font awesome -->
     <script
       src="https://kit.fontawesome.com/7e8d2e2fb8.js"
       crossorigin="anonymous"
     ></script>
-    <!-- <script src="js/reviewClass.js"></script> -->
-    <title>Edu Trac</title>
+
+    <title>EduTrack</title>
   </head>
   <body>
     <!-- Login page -->
@@ -44,12 +47,14 @@
             <a href="#" data-rel="close">Close menu</a>
           </li>
           <li><a href="#homePage">Home</a></li>
-          <li><a href="#users">Users</a></li>
-          <li><a href="#attendancePage">Attendance</a></li>
+          <li><a href="#usersPanelPage">Users</a></li>
+          <li><a href="#attendancePanelPage">Attendance</a></li>
           <li><a href="#classes">Classes</a></li>
-          <li><a href="#eventsPage">Events</a></li>
+          <li><a href="#eventsPanelPage">Events</a></li>
         </ul>
       </div>
+
+      <!-- Content -->
       <section data-role="content" class="p-0 m-0">
         <!-- Header -->
         <div class="header-container_login">
@@ -65,19 +70,19 @@
         <!-- Body -->
         <div class="body-container_login">
           <!-- Form -->
-          <form class="login-container">
+          <form>
             <!-- Email -->
-            <div data-role="fieldcontain" class="m-0 p-0 w-full">
+            <div data-role="fieldcontain" class="m-0 p-0 w-full border-0">
               <input
                 type="text"
-                id="emailLogin"
-                name="emailLogin"
-                placeholder="Email"
+                id="usernameLogin"
+                name="usernameLogin"
+                placeholder="Username"
               />
             </div>
 
             <!-- Password -->
-            <div data-role="fieldcontain" class="m-0 p-0 w-full">
+            <div data-role="fieldcontain" class="m-0 p-0 w-full border-0">
               <input
                 type="text"
                 id="passwordLogin"
@@ -86,14 +91,7 @@
               />
             </div>
             <button type="submit">Login</button>
-            <a href="#" class="forgotPassword text-shadow-none"
-              >Forgot your password?</a
-            >
           </form>
-
-          <a href="#" class="text-shadow-none signUpLink">
-            Don't have an account? <span>Sign up</span>
-          </a>
         </div>
       </section>
     </div>
@@ -109,10 +107,10 @@
           <li class="ui-btn-active ui-state-persist">
             <a href="#homePage" class="text-shadow-none">Home</a>
           </li>
-          <li><a href="#usersPage">Users</a></li>
-          <li><a href="#attendancePage">Attendance</a></li>
+          <li><a href="#usersPanelPage">Users</a></li>
+          <li><a href="#attendancePanelPage">Attendance</a></li>
           <li><a href="#classes">Classes</a></li>
-          <li><a href="#eventsPage">Events</a></li>
+          <li><a href="#eventsPanelPage">Events</a></li>
         </ul>
       </div>
 
@@ -124,7 +122,7 @@
             <a href="#nav-panel" class="menu-icon"
               ><i class="fa-solid fa-bars"></i
             ></a>
-            <a href="#" class="user-icon">
+            <a href="#" class="user-icon underline-none">
               <img src="./img/userIcon.svg" alt="User icon" />
               <span class="text-shadow-none text-white underline-none"
                 >Mateo</span
@@ -132,11 +130,35 @@
             </a>
           </div>
         </div>
+        <div class="content-container">
+          <div class="event-card-container">
+            <img src="./img/sportsActivity.png" class="event-card-image" />
+            <div class="event-card-content-container">
+              <div class="info-event-container">
+                <div class="info-event-top">
+                  <h3 class="info-event-title">Football men vs women</h3>
+                  <div class="info-event-category">
+                    <p>Sports</p>
+                  </div>
+                </div>
+                <div class="info-event-bottom">
+                  <p class="info-event-price">FREE</p>
+                  <p class="info-event-date">10/08/2023</p>
+                </div>
+              </div>
+
+              <a class="see-more-container" href="#eventPage">
+                <p class="see-more-text">See more</p>
+                <span>></span>
+              </a>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
 
     <!-- Users page -->
-    <div id="usersPage" data-role="page">
+    <div id="usersPanelPage" data-role="page">
       <!-- Menu -->
       <div data-role="panel" id="nav-panel" data-display="push" data-theme="a">
         <ul data-role="listview">
@@ -147,11 +169,11 @@
             <a href="#homePage">Home</a>
           </li>
           <li class="ui-btn-active ui-state-persist">
-            <a href="#usersPage" class="text-shadow-none">Users</a>
+            <a href="#usersPanelPage" class="text-shadow-none">Users</a>
           </li>
-          <li><a href="#attendancePage">Attendance</a></li>
+          <li><a href="#attendancePanelPage">Attendance</a></li>
           <li><a href="#classes">Classes</a></li>
-          <li><a href="#eventsPage">Events</a></li>
+          <li><a href="#eventsPanelPage">Events</a></li>
         </ul>
       </div>
 
@@ -163,7 +185,7 @@
               <i class="fa-solid fa-bars"></i>
             </a>
             <h1 class="text-shadow-none text-white">Users</h1>
-            <a href="#" class="user-icon">
+            <a href="#" class="user-icon underline-none">
               <img src="./img/userIcon.svg" alt="User icon" />
               <span class="text-shadow-none text-white underline-none"
                 >Mateo</span
@@ -178,8 +200,8 @@
           <div class="card-container" id="newUserCard">
             <img src="./img/addUserIcon.svg" class="card-image" />
             <h2 class="card-title">New User</h2>
-            <a class="card-info-container">
-              <p class="card-info-text">See more</p>
+            <a class="see-more-container" href="#addUserPage">
+              <p>See more</p>
               <span>></span>
             </a>
           </div>
@@ -188,8 +210,8 @@
           <div class="card-container" id="manageUsersCard">
             <img src="./img/addUserIcon.svg" class="card-image" />
             <h2 class="card-title">Manage Users</h2>
-            <a class="card-info-container">
-              <p class="card-info-text">See more</p>
+            <a class="see-more-container">
+              <p>See more</p>
               <span>></span>
             </a>
           </div>
@@ -198,7 +220,7 @@
     </div>
 
     <!-- Attendace page -->
-    <div id="attendancePage" data-role="page">
+    <div id="attendancePanelPage" data-role="page">
       <!-- Menu -->
       <div data-role="panel" id="nav-panel" data-display="push" data-theme="a">
         <ul data-role="listview">
@@ -209,14 +231,16 @@
             <a href="#homePage">Home</a>
           </li>
           <li>
-            <a href="#usersPage">Users</a>
+            <a href="#usersPanelPage">Users</a>
           </li>
           <li class="ui-btn-active ui-state-persist">
-            <a href="#attendancePage" class="text-shadow-none">Attendance</a>
+            <a href="#attendancePanelPage" class="text-shadow-none"
+              >Attendance</a
+            >
           </li>
           <li><a href="#classes">Classes</a></li>
           <li>
-            <a href="#eventsPage">Events</a>
+            <a href="#eventsPanelPage">Events</a>
           </li>
         </ul>
       </div>
@@ -229,7 +253,7 @@
               ><i class="fa-solid fa-bars"></i
             ></a>
             <h1 class="text-shadow-none text-white">Attendance</h1>
-            <a href="#" class="user-icon"
+            <a href="#" class="user-icon underline-none"
               ><img src="./img/userIcon.svg" alt="User icon" />
               <span class="text-shadow-none text-white underline-none"
                 >Mateo</span
@@ -244,8 +268,8 @@
           <div class="card-container" id="newAttendanceCard">
             <img src="./img/addUserIcon.svg" class="card-image" />
             <h2 class="card-title">New Attendance</h2>
-            <a class="card-info-container">
-              <p class="card-info-text">See more</p>
+            <a class="see-more-container" href="#addAttendancePage">
+              <p>See more</p>
               <span>></span>
             </a>
           </div>
@@ -254,8 +278,8 @@
           <div class="card-container" id="manageAttendancesCard">
             <img src="./img/addUserIcon.svg" class="card-image" />
             <h2 class="card-title">Manage Attendance</h2>
-            <a class="card-info-container">
-              <p class="card-info-text">See more</p>
+            <a class="see-more-container">
+              <p>See more</p>
               <span>></span>
             </a>
           </div>
@@ -264,7 +288,7 @@
     </div>
 
     <!-- Events page -->
-    <div id="eventsPage" data-role="page">
+    <div id="eventsPanelPage" data-role="page">
       <!-- Menu -->
       <div data-role="panel" id="nav-panel" data-display="push" data-theme="a">
         <ul data-role="listview">
@@ -275,12 +299,12 @@
             <a href="#homePage">Home</a>
           </li>
           <li>
-            <a href="#usersPage">Users</a>
+            <a href="#usersPanelPage">Users</a>
           </li>
-          <li><a href="#attendancePage">Attendance</a></li>
-          <li><a href="#classes">Classes</a></li>
+          <li><a href="#attendancePanelPage">Attendance</a></li>
+          <li><a href="add.html">Classes</a></li>
           <li class="ui-btn-active ui-state-persist">
-            <a href="#eventsPage" class="text-shadow-none">Events</a>
+            <a href="#eventsPanelPage" class="text-shadow-none">Events</a>
           </li>
         </ul>
       </div>
@@ -293,7 +317,7 @@
               ><i class="fa-solid fa-bars"></i
             ></a>
             <h1 class="text-shadow-none text-white">Events</h1>
-            <a href="#" class="user-icon"
+            <a href="#" class="user-icon underline-none"
               ><img src="./img/userIcon.svg" alt="User icon" />
               <span class="text-shadow-none text-white underline-none"
                 >Mateo</span
@@ -308,8 +332,8 @@
           <div class="card-container" id="newEventCard">
             <img src="./img/addUserIcon.svg" class="card-image" />
             <h2 class="card-title">New Event</h2>
-            <a class="card-info-container">
-              <p class="card-info-text">See more</p>
+            <a class="see-more-container" href="#addEventPage">
+              <p>See more</p>
               <span>></span>
             </a>
           </div>
@@ -318,11 +342,552 @@
           <div class="card-container" id="manageEventsCard">
             <img src="./img/addUserIcon.svg" class="card-image" />
             <h2 class="card-title">Manage Events</h2>
-            <a class="card-info-container">
-              <p class="card-info-text">See more</p>
+            <a class="see-more-container">
+              <p>See more</p>
               <span>></span>
             </a>
           </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- +**************************+ ADD PAGES  +***************************-->
+    <!-- Add user page -->
+    <div id="addUserPage" data-role="page">
+      <!-- Menu -->
+      <div data-role="panel" id="nav-panel" data-display="push" data-theme="a">
+        <ul data-role="listview">
+          <li data-icon="delete">
+            <a href="#" data-rel="close">Close menu</a>
+          </li>
+          <li>
+            <a href="#homePage">Home</a>
+          </li>
+          <li class="ui-btn-active ui-state-persist">
+            <a href="#usersPanelPage" class="text-shadow-none">Users</a>
+          </li>
+          <li><a href="#attendancePanelPage">Attendance</a></li>
+          <li><a href="add.html">Classes</a></li>
+          <li>
+            <a href="#eventsPanelPage">Events</a>
+          </li>
+        </ul>
+      </div>
+
+      <section data-role="content m-0 p-0">
+        <!-- Header page -->
+        <div class="header_page">
+          <div>
+            <a href="#nav-panel" class="menu-icon"
+              ><i class="fa-solid fa-bars"></i
+            ></a>
+            <h1 class="text-shadow-none text-white">New user</h1>
+            <a href="#" class="user-icon underline-none"
+              ><img src="./img/userIcon.svg" alt="User icon" />
+              <span class="text-shadow-none text-white underline-none"
+                >Mateo</span
+              >
+            </a>
+          </div>
+        </div>
+
+        <!-- Body page -->
+        <div class="content-container">
+          <img src="./img/addUserIcon.svg" class="form-img" />
+
+          <!-- Form -->
+          <form id="addUserForm" name="addUserForm">
+            <div class="form-divider">
+              <p>Role</p>
+              <span></span>
+            </div>
+            <!-- User role -->
+            <div
+              data-role="fieldcontain"
+              class="m-0 p-0 w-full border-0 flex-col"
+            >
+              <label for="addUser_role">Role:</label>
+              <select
+                name="addUser_role"
+                id="addUser_role"
+                data-native-menu="true"
+              >
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+                <option value="admin">Admin</option>
+              </select>
+            </div>
+
+            <div class="form-divider">
+              <p>User info</p>
+              <span></span>
+            </div>
+            <!-- Full name -->
+            <div
+              data-role="fieldcontain"
+              class="m-0 p-0 w-full flex-col border-0"
+            >
+              <label for="addUser_fullName">Full name:</label>
+              <input
+                type="text"
+                id="addUser_fullName"
+                name="addUser_fullName"
+                placeholder="Full name"
+                class="plain-background-input"
+              />
+            </div>
+
+            <!-- Date of birth -->
+            <div
+              data-role="fieldcontain"
+              class="m-0 p-0 w-full border-0 flex-col"
+            >
+              <label for="addUser_dateOfBirth">Date of birth</label>
+              <input
+                type="date"
+                id="addUser_dateOfBirth"
+                name="addUser_dateOfBirth"
+                class="plain-background-input"
+              />
+            </div>
+
+            <!-- Phone Number -->
+            <div
+              data-role="fieldcontain"
+              class="m-0 p-0 w-full flex-col border-0"
+            >
+              <label for="addUser_phoneNumber">Phone number:</label>
+              <input
+                type="tel"
+                id="addUser_phoneNumber"
+                name="addUser_phoneNumber"
+                placeholder="Phone number"
+                class="plain-background-input"
+              />
+            </div>
+
+            <!-- Address -->
+            <div
+              data-role="fieldcontain"
+              class="m-0 p-0 w-full flex-col border-0"
+            >
+              <label for="addUser_address">Address:</label>
+              <input
+                type="text"
+                id="addUser_address"
+                name="addUser_address"
+                placeholder="Address"
+                class="plain-background-input"
+              />
+            </div>
+
+            <!-- Zip Code -->
+            <div
+              data-role="fieldcontain"
+              class="m-0 p-0 w-full flex-col border-0"
+            >
+              <label for="addUser_zipCode">Zip Code:</label>
+              <input
+                type="text"
+                id="addUser_zipCode"
+                name="addUser_zipCode"
+                placeholder="Zip Code"
+                class="plain-background-input"
+              />
+            </div>
+
+            <div class="form-divider">
+              <p>Login credentials</p>
+              <span></span>
+            </div>
+
+            <!-- Username -->
+            <div
+              data-role="fieldcontain"
+              class="m-0 p-0 w-full flex-col border-0"
+            >
+              <label for="addUser_username">Username:</label>
+              <input
+                type="text"
+                id="addUser_username"
+                name="addUser_username"
+                placeholder="Username"
+                class="plain-background-input"
+              />
+            </div>
+
+            <!-- Password -->
+            <div
+              data-role="fieldcontain"
+              class="m-0 p-0 w-full flex-col border-0"
+            >
+              <label for="addUser_password">Password:</label>
+              <input
+                type="password"
+                id="addUser_password"
+                name="addUser_password"
+                placeholder="Password"
+                class="plain-background-input"
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="mt-40 text-shadow-none"
+              id="addUserBtn"
+              name="addUserBtn"
+            >
+              Create
+            </button>
+          </form>
+        </div>
+      </section>
+    </div>
+
+    <!-- Add event page -->
+    <div id="addEventPage" data-role="page">
+      <!-- Menu -->
+      <div data-role="panel" id="nav-panel" data-display="push" data-theme="a">
+        <ul data-role="listview">
+          <li data-icon="delete">
+            <a href="#" data-rel="close">Close menu</a>
+          </li>
+          <li>
+            <a href="#homePage">Home</a>
+          </li>
+          <li>
+            <a href="#usersPanelPage">Users</a>
+          </li>
+          <li><a href="#attendancePanelPage">Attendance</a></li>
+          <li><a href="add.html">Classes</a></li>
+          <li class="ui-btn-active ui-state-persist">
+            <a href="#eventsPanelPage" class="text-shadow-none">Events</a>
+          </li>
+        </ul>
+      </div>
+
+      <section data-role="content m-0 p-0">
+        <!-- Header page -->
+        <div class="header_page">
+          <div>
+            <a href="#nav-panel" class="menu-icon"
+              ><i class="fa-solid fa-bars"></i
+            ></a>
+            <h1 class="text-shadow-none text-white">New event</h1>
+            <a href="#" class="user-icon underline-none"
+              ><img src="./img/userIcon.svg" alt="User icon" />
+              <span class="text-shadow-none text-white underline-none"
+                >Mateo</span
+              >
+            </a>
+          </div>
+        </div>
+
+        <!-- Body page -->
+        <div class="content-container">
+          <img src="./img/addUserIcon.svg" class="form-img" />
+
+          <form id="addEventForm" name="addEventForm">
+            <!-- Event Title -->
+            <div
+              data-role="fieldcontain"
+              class="m-0 p-0 w-full flex-col border-0"
+            >
+              <label for="addEvent_title">Event Title:</label>
+              <input
+                type="text"
+                id="addEvent_title"
+                name="addEvent_title"
+                placeholder="Event Title"
+                class="plain-background-input"
+              />
+            </div>
+
+            <!-- Event Description -->
+            <div
+              data-role="fieldcontain"
+              class="m-0 p-0 w-full flex-col border-0"
+            >
+              <label for="addEvent_description">Event Description:</label>
+              <textarea
+                id="addEvent_description"
+                name="addEvent_description"
+                placeholder="Describe the event"
+                class="plain-background-input"
+                data-native-menu="true"
+              ></textarea>
+            </div>
+
+            <!-- Event Date -->
+            <div
+              data-role="fieldcontain"
+              class="m-0 p-0 w-full flex-col border-0"
+            >
+              <label for="addEvent_date">Event Date:</label>
+              <input
+                type="date"
+                id="addEvent_date"
+                name="addEvent_date"
+                class="plain-background-input"
+              />
+            </div>
+
+            <!-- Event Cost -->
+            <div
+              data-role="fieldcontain"
+              class="m-0 p-0 w-full flex-col border-0"
+            >
+              <label for="addEvent_cost">Event Cost:</label>
+              <input
+                type="number"
+                id="addEvent_cost"
+                name="addEvent_cost"
+                placeholder="Cost in USD"
+                class="plain-background-input"
+                value="0"
+              />
+            </div>
+
+            <!-- Event Type -->
+            <div
+              data-role="fieldcontain"
+              class="m-0 p-0 w-full flex-col border-0"
+            >
+              <label for="addEvent_type">Event Type:</label>
+              <select
+                name="addEvent_type"
+                id="addEvent_type"
+                data-native-menu="true"
+              >
+                <option value="academic">Academic (e.g., Science Fair)</option>
+                <option value="sports">Sports Event</option>
+                <option value="cultural">Cultural Festival</option>
+                <option value="social">Social Gathering</option>
+                <option value="fundraising">Fundraising Event</option>
+              </select>
+            </div>
+
+            <!-- Event Location -->
+            <div
+              data-role="fieldcontain"
+              class="m-0 p-0 w-full flex-col border-0"
+            >
+              <label for="addEvent_location">Event Location:</label>
+              <input
+                type="text"
+                id="addEvent_location"
+                name="addEvent_location"
+                placeholder="Location"
+                class="plain-background-input"
+              />
+            </div>
+
+            <!-- Event Duration -->
+            <div
+              data-role="fieldcontain"
+              class="m-0 p-0 w-full flex-col border-0"
+            >
+              <label for="addEvent_duration">Event Duration:</label>
+              <input
+                type="text"
+                id="addEvent_duration"
+                name="addEvent_duration"
+                placeholder="Duration (e.g., 2 hours)"
+                class="plain-background-input"
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="mt-40 text-shadow-none"
+              id="addEventBtn"
+              name="addEventBtn"
+            >
+              Submit Event
+            </button>
+          </form>
+        </div>
+      </section>
+    </div>
+
+    <!-- Add attendance page -->
+    <div id="addAttendancePage" data-role="page">
+      <!-- Menu -->
+      <div data-role="panel" id="nav-panel" data-display="push" data-theme="a">
+        <ul data-role="listview">
+          <li data-icon="delete">
+            <a href="#" data-rel="close">Close menu</a>
+          </li>
+          <li>
+            <a href="#homePage">Home</a>
+          </li>
+          <li>
+            <a href="#usersPanelPage">Users</a>
+          </li>
+          <li class="ui-btn-active ui-state-persist">
+            <a href="#attendancePanelPage" class="text-shadow-none"
+              >Attendance</a
+            >
+          </li>
+          <li><a href="add.html">Classes</a></li>
+          <li>
+            <a href="#eventsPanelPage">Events</a>
+          </li>
+        </ul>
+      </div>
+
+      <section data-role="content m-0 p-0">
+        <!-- Header page -->
+        <div class="header_page">
+          <div>
+            <a href="#nav-panel" class="menu-icon"
+              ><i class="fa-solid fa-bars"></i
+            ></a>
+            <h1 class="text-shadow-none text-white">New attendance</h1>
+            <a href="#" class="user-icon underline-none"
+              ><img src="./img/userIcon.svg" alt="User icon" />
+              <span class="text-shadow-none text-white underline-none"
+                >Mateo</span
+              >
+            </a>
+          </div>
+        </div>
+
+        <!-- Body page -->
+        <div class="content-container">
+          <img src="./img/addUserIcon.svg" class="form-img" />
+          <form>
+            <!-- Professor Name -->
+            <div class="m-0 p-0 w-full flex-col border-0">
+              <label for="professorName">Professor Name:</label>
+              <input
+                type="text"
+                id="professorName"
+                name="professorName"
+                placeholder="Professor Name"
+                class="plain-background-input"
+              />
+            </div>
+
+            <!-- Date Taken -->
+            <div class="m-0 p-0 w-full flex-col border-0">
+              <label for="dateTaken">Date Taken:</label>
+              <input
+                type="date"
+                id="dateTaken"
+                name="dateTaken"
+                class="plain-background-input"
+              />
+            </div>
+
+            <!-- List of Users (Static for now) -->
+            <div class="m-0 p-0 w-full flex-col border-0">
+              <label for="userList">List of Users:</label>
+              <select
+                multiple
+                name="userList"
+                id="userList"
+                data-native-menu="true"
+              >
+                <!-- Static User List (Replace with dynamic list from your database) -->
+                <option value="user1">User 1</option>
+                <option value="user2">User 2</option>
+                <option value="user3">User 3</option>
+                <!-- Add more users as needed -->
+              </select>
+            </div>
+
+            <!-- Professor Name -->
+            <div class="m-0 p-0 w-full flex-col border-0">
+              <label for="roomNumber">Room #:</label>
+              <input
+                type="text"
+                id="roomNumber"
+                name="roomNumber"
+                placeholder="Room #"
+                class="plain-background-input"
+              />
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="mt-40 text-shadow-none">
+              Take Attendance
+            </button>
+          </form>
+        </div>
+      </section>
+    </div>
+
+    <!-- Dynamic pages -->
+    <!-- Events page -->
+    <div id="eventPage" data-role="page">
+      <!-- Menu -->
+      <div data-role="panel" id="nav-panel" data-display="push" data-theme="a">
+        <ul data-role="listview">
+          <li data-icon="delete">
+            <a href="#" data-rel="close">Close menu</a>
+          </li>
+          <li>
+            <a href="#homePage">Home</a>
+          </li>
+          <li>
+            <a href="#usersPanelPage">Users</a>
+          </li>
+          <li>
+            <a href="#attendancePanelPage">Attendance</a>
+          </li>
+          <li><a href="add.html">Classes</a></li>
+          <li class="ui-btn-active ui-state-persist">
+            <a href="#eventsPanelPage" class="text-shadow-none">Events</a>
+          </li>
+        </ul>
+      </div>
+
+      <section data-role="content m-0 p-0">
+        <!-- Header page -->
+        <div class="header_page">
+          <div>
+            <a href="#nav-panel" class="menu-icon"
+              ><i class="fa-solid fa-bars"></i
+            ></a>
+            <h1 class="text-shadow-none text-white">Event</h1>
+            <a href="#" class="user-icon underline-none"
+              ><img src="./img/userIcon.svg" alt="User icon" />
+              <span class="text-shadow-none text-white underline-none"
+                >Mateo</span
+              >
+            </a>
+          </div>
+        </div>
+
+        <!-- Body page -->
+        <div class="content-container event-container">
+          <img src="./img/sportsActivity.png" class="event-img" />
+          <div class="info-event-container">
+            <div class="info-event-top">
+              <h3 class="info-event-title">Football men vs women</h3>
+              <div class="info-event-category">
+                <p>Sports</p>
+              </div>
+            </div>
+            <div class="info-event-bottom">
+              <p class="info-event-price">💵 FREE</p>
+              <p class="info-event-date">📆 10/08/2023</p>
+              <p class="info-event-date">📍 Main Park</p>
+              <p class="info-event-date">⏳ 2h long</p>
+            </div>
+          </div>
+          <p class="event-description">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum
+          </p>
         </div>
       </section>
     </div>

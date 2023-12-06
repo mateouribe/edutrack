@@ -34,13 +34,6 @@
   padding: 30px;
 }
 
-.body-container_login form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .forgotPassword {
   margin-top: 50px;
   color: white !important;

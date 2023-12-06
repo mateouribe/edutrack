@@ -1,0 +1,91 @@
+button {
+  border-radius: 16px !important;
+  background: var(--main-purple) !important;
+  box-shadow: 0px 4px 8px 0px rgba(0, 14, 204, 0.24) !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 500 !important;
+  max-width: fit-content !important;
+  padding: 10px 50px !important;
+  margin: 0 auto !important;
+}
+
+.ui-input-text {
+  width: 100% !important;
+}
+input,
+select,
+textarea {
+  width: 100% !important;
+  padding: 10px 20px !important;
+  background: var(--white) !important;
+  margin: 0 auto !important;
+  color: var(--main-text-color) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--main-text-color) !important;
+}
+
+.plain-background-input {
+  background: var(--white) !important;
+  border: 1px solid var(--main-purple) !important;
+  box-shadow: none !important;
+}
+.ui-page-theme-a .ui-body-inherit {
+  background-color: transparent !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.form-img {
+  width: 150px;
+  height: 150px;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-divider {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #c3c3ff;
+  margin: 30px 0px 0px 0px;
+}
+
+.form-divider p {
+  max-width: fit-content;
+  background-color: var(--white);
+  padding: 0 10px;
+  z-index: 2;
+  position: relative;
+}
+
+.form-divider span {
+  width: 100%;
+  height: 1px;
+  background: #c3c3ff;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+label.error {
+  color: red;
+  font-size: 12px;
+  margin: 0;
+  padding-top: 5px;
+  text-align: left;
+  width: 100%;
+}
