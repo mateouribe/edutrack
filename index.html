@@ -10,8 +10,8 @@
     />
 
     <!-- CSS -->
-    <!-- <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="./css/mamystyle.css" /> -->
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/login.css" />
 
     <!-- jQuery  -->
     <script src="js/lib/jquery-2.1.4.js"></script>
@@ -27,8 +27,304 @@
     <script src="js/facade.js"></script>
     <script src="js/global.js"></script>
     <script src="js/util.js"></script>
+    <script
+      src="https://kit.fontawesome.com/7e8d2e2fb8.js"
+      crossorigin="anonymous"
+    ></script>
     <!-- <script src="js/reviewClass.js"></script> -->
-    <title>Edu Track</title>
+    <title>Edu Trac</title>
   </head>
-  <body></body>
+  <body>
+    <!-- Login page -->
+    <div id="loginPage" data-role="page">
+      <!-- Menu -->
+      <div data-role="panel" id="nav-panel" data-display="push" data-theme="a">
+        <ul data-role="listview">
+          <li data-icon="delete">
+            <a href="#" data-rel="close">Close menu</a>
+          </li>
+          <li><a href="#homePage">Home</a></li>
+          <li><a href="#users">Users</a></li>
+          <li><a href="#attendancePage">Attendance</a></li>
+          <li><a href="#classes">Classes</a></li>
+          <li><a href="#eventsPage">Events</a></li>
+        </ul>
+      </div>
+      <section data-role="content" class="p-0 m-0">
+        <!-- Header -->
+        <div class="header-container_login">
+          <a
+            href="#nav-panel"
+            class="ui-btn ui-btn-icon-notext ui-icon-bars ui-btn-left"
+          ></a>
+          <div class="logo-container_login">
+            <img src="./img/logo.svg" alt="EduTrack logo" />
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div class="body-container_login">
+          <!-- Form -->
+          <form class="login-container">
+            <!-- Email -->
+            <div data-role="fieldcontain" class="m-0 p-0 w-full">
+              <input
+                type="text"
+                id="emailLogin"
+                name="emailLogin"
+                placeholder="Email"
+              />
+            </div>
+
+            <!-- Password -->
+            <div data-role="fieldcontain" class="m-0 p-0 w-full">
+              <input
+                type="text"
+                id="passwordLogin"
+                name="passwordLogin"
+                placeholder="Password"
+              />
+            </div>
+            <button type="submit">Login</button>
+            <a href="#" class="forgotPassword text-shadow-none"
+              >Forgot your password?</a
+            >
+          </form>
+
+          <a href="#" class="text-shadow-none signUpLink">
+            Don't have an account? <span>Sign up</span>
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <!-- Home page -->
+    <div id="homePage" data-role="page">
+      <!-- Menu -->
+      <div data-role="panel" id="nav-panel" data-display="push" data-theme="a">
+        <ul data-role="listview">
+          <li data-icon="delete">
+            <a href="#" data-rel="close">Close menu</a>
+          </li>
+          <li class="ui-btn-active ui-state-persist">
+            <a href="#homePage" class="text-shadow-none">Home</a>
+          </li>
+          <li><a href="#usersPage">Users</a></li>
+          <li><a href="#attendancePage">Attendance</a></li>
+          <li><a href="#classes">Classes</a></li>
+          <li><a href="#eventsPage">Events</a></li>
+        </ul>
+      </div>
+
+      <section data-role="content m-0 p-0">
+        <!-- Header page -->
+        <div class="header_page">
+          <div>
+            <h1 class="text-shadow-none text-white">Home</h1>
+            <a href="#nav-panel" class="menu-icon"
+              ><i class="fa-solid fa-bars"></i
+            ></a>
+            <a href="#" class="user-icon">
+              <img src="./img/userIcon.svg" alt="User icon" />
+              <span class="text-shadow-none text-white underline-none"
+                >Mateo</span
+              >
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Users page -->
+    <div id="usersPage" data-role="page">
+      <!-- Menu -->
+      <div data-role="panel" id="nav-panel" data-display="push" data-theme="a">
+        <ul data-role="listview">
+          <li data-icon="delete">
+            <a href="#" data-rel="close">Close menu</a>
+          </li>
+          <li>
+            <a href="#homePage">Home</a>
+          </li>
+          <li class="ui-btn-active ui-state-persist">
+            <a href="#usersPage" class="text-shadow-none">Users</a>
+          </li>
+          <li><a href="#attendancePage">Attendance</a></li>
+          <li><a href="#classes">Classes</a></li>
+          <li><a href="#eventsPage">Events</a></li>
+        </ul>
+      </div>
+
+      <section data-role="content m-0 p-0">
+        <!-- Header page -->
+        <div class="header_page">
+          <div>
+            <a href="#nav-panel" class="menu-icon">
+              <i class="fa-solid fa-bars"></i>
+            </a>
+            <h1 class="text-shadow-none text-white">Users</h1>
+            <a href="#" class="user-icon">
+              <img src="./img/userIcon.svg" alt="User icon" />
+              <span class="text-shadow-none text-white underline-none"
+                >Mateo</span
+              >
+            </a>
+          </div>
+        </div>
+
+        <!-- Body page -->
+        <div class="content-container h-100vh cards-container">
+          <!-- Add users card -->
+          <div class="card-container" id="newUserCard">
+            <img src="./img/addUserIcon.svg" class="card-image" />
+            <h2 class="card-title">New User</h2>
+            <a class="card-info-container">
+              <p class="card-info-text">See more</p>
+              <span>></span>
+            </a>
+          </div>
+
+          <!-- Add users card -->
+          <div class="card-container" id="manageUsersCard">
+            <img src="./img/addUserIcon.svg" class="card-image" />
+            <h2 class="card-title">Manage Users</h2>
+            <a class="card-info-container">
+              <p class="card-info-text">See more</p>
+              <span>></span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Attendace page -->
+    <div id="attendancePage" data-role="page">
+      <!-- Menu -->
+      <div data-role="panel" id="nav-panel" data-display="push" data-theme="a">
+        <ul data-role="listview">
+          <li data-icon="delete">
+            <a href="#" data-rel="close">Close menu</a>
+          </li>
+          <li>
+            <a href="#homePage">Home</a>
+          </li>
+          <li>
+            <a href="#usersPage">Users</a>
+          </li>
+          <li class="ui-btn-active ui-state-persist">
+            <a href="#attendancePage" class="text-shadow-none">Attendance</a>
+          </li>
+          <li><a href="#classes">Classes</a></li>
+          <li>
+            <a href="#eventsPage">Events</a>
+          </li>
+        </ul>
+      </div>
+
+      <section data-role="content m-0 p-0">
+        <!-- Header page -->
+        <div class="header_page">
+          <div>
+            <a href="#nav-panel" class="menu-icon"
+              ><i class="fa-solid fa-bars"></i
+            ></a>
+            <h1 class="text-shadow-none text-white">Attendance</h1>
+            <a href="#" class="user-icon"
+              ><img src="./img/userIcon.svg" alt="User icon" />
+              <span class="text-shadow-none text-white underline-none"
+                >Mateo</span
+              >
+            </a>
+          </div>
+        </div>
+
+        <!-- Body page -->
+        <div class="content-container h-100vh cards-container">
+          <!-- Add attendance card -->
+          <div class="card-container" id="newAttendanceCard">
+            <img src="./img/addUserIcon.svg" class="card-image" />
+            <h2 class="card-title">New Attendance</h2>
+            <a class="card-info-container">
+              <p class="card-info-text">See more</p>
+              <span>></span>
+            </a>
+          </div>
+
+          <!-- Add users card -->
+          <div class="card-container" id="manageAttendancesCard">
+            <img src="./img/addUserIcon.svg" class="card-image" />
+            <h2 class="card-title">Manage Attendance</h2>
+            <a class="card-info-container">
+              <p class="card-info-text">See more</p>
+              <span>></span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Events page -->
+    <div id="eventsPage" data-role="page">
+      <!-- Menu -->
+      <div data-role="panel" id="nav-panel" data-display="push" data-theme="a">
+        <ul data-role="listview">
+          <li data-icon="delete">
+            <a href="#" data-rel="close">Close menu</a>
+          </li>
+          <li>
+            <a href="#homePage">Home</a>
+          </li>
+          <li>
+            <a href="#usersPage">Users</a>
+          </li>
+          <li><a href="#attendancePage">Attendance</a></li>
+          <li><a href="#classes">Classes</a></li>
+          <li class="ui-btn-active ui-state-persist">
+            <a href="#eventsPage" class="text-shadow-none">Events</a>
+          </li>
+        </ul>
+      </div>
+
+      <section data-role="content m-0 p-0">
+        <!-- Header page -->
+        <div class="header_page">
+          <div>
+            <a href="#nav-panel" class="menu-icon"
+              ><i class="fa-solid fa-bars"></i
+            ></a>
+            <h1 class="text-shadow-none text-white">Events</h1>
+            <a href="#" class="user-icon"
+              ><img src="./img/userIcon.svg" alt="User icon" />
+              <span class="text-shadow-none text-white underline-none"
+                >Mateo</span
+              >
+            </a>
+          </div>
+        </div>
+
+        <!-- Body page -->
+        <div class="content-container h-100vh cards-container">
+          <!-- Add users card -->
+          <div class="card-container" id="newEventCard">
+            <img src="./img/addUserIcon.svg" class="card-image" />
+            <h2 class="card-title">New Event</h2>
+            <a class="card-info-container">
+              <p class="card-info-text">See more</p>
+              <span>></span>
+            </a>
+          </div>
+
+          <!-- Add users card -->
+          <div class="card-container" id="manageEventsCard">
+            <img src="./img/addUserIcon.svg" class="card-image" />
+            <h2 class="card-title">Manage Events</h2>
+            <a class="card-info-container">
+              <p class="card-info-text">See more</p>
+              <span>></span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
 </html>
