@@ -8,6 +8,7 @@ button {
   max-width: fit-content !important;
   padding: 10px 50px !important;
   margin: 0 auto !important;
+  text-shadow: none !important;
 }
 
 .ui-input-text {
@@ -88,4 +89,13 @@ label.error {
   padding-top: 5px;
   text-align: left;
   width: 100%;
+  text-shadow: none !important;
+}
+
+label {
+  margin-bottom: 0px !important;
+}
+
+.ui-input-text {
+  margin: 0px !important;
 }

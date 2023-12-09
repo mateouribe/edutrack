@@ -1,0 +1,60 @@
+/* <div class="user-card-container">
+              <!-- Left -->
+              <div class="user-card-info-container">
+                <img src="./img/userIcon.svg" class="user-card-img" />
+                <div class="user-card-name-role">
+                  <p>Name</p>
+                  <p>Role</p>
+                </div>
+              </div>
+
+              <!-- Right -->
+              <div class="user-card-actions">
+                <a><i class="fa-solid fa-user-pen text-main"></i></a>
+                <a><i class="fa-solid fa-trash text-main"></i></a>
+              </div>
+            </div> */
+
+.user-card-container {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--light-purple);
+  box-shadow: 0px 4px 8px 0px rgba(0, 14, 204, 0.02);
+}
+
+.user-card-info-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-card-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--light-purple);
+  padding: 20px;
+}
+
+.user-card-name-role p:nth-child(2) {
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+.user-card-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-card-actions a {
+  cursor: pointer;
+}
