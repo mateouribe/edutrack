@@ -7,7 +7,9 @@
   --white: #f5f5ff;
   --blue: #2ad4ff;
 }
-
+.ui-panel-dismiss {
+  display: none !important;
+}
 * {
   margin: 0;
   padding: 0;

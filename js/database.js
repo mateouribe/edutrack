@@ -39,7 +39,7 @@ let DB = {
         "dateOfBirth Date NOT NULL," +
         "phoneNumber VARCHAR(10) NOT NULL," +
         "address VARCHAR(100) NOT NULL," +
-        "zipCode VARCHAR(10) NOT NULL," +
+        "zipcode VARCHAR(100) NOT NULL," +
         "username VARCHAR(30) UNIQUE NOT NULL," +
         "password VARCHAR(30) NOT NULL);";
 

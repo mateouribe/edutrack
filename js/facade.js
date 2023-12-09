@@ -331,7 +331,6 @@ const loadClassesCards = (containerReference, role = "admin") => {
     let rows = Array.from(result.rows); // Convert to array
 
     if (role === "admin") {
-      // For admin, just list the class names
       let htmlCode = rows
         .map(
           (classObj) => `
@@ -344,13 +343,16 @@ const loadClassesCards = (containerReference, role = "admin") => {
       `
         )
         .join("");
+
       $(containerReference).html(htmlCode);
+
+      // Event handler for admin role
+      attachClickHandler(containerReference, role);
     } else {
       let userId = localStorage.getItem("currentUserId");
       let promises = [];
 
       rows.forEach((classObj) => {
-        // Create a promise for each class attendance check
         let promise = new Promise((resolve, reject) => {
           classes.checkUserAttendance(classObj.id, userId, (isAttending) => {
             let classStatus = isAttending ? "Attending" : "Not attending";
@@ -376,20 +378,25 @@ const loadClassesCards = (containerReference, role = "admin") => {
           .join("");
 
         $(containerReference).html(htmlCode);
+
+        // Event handler for non-admin role
+        attachClickHandler(containerReference, role);
       });
     }
-
-    $(`${containerReference} a`).on("click", function () {
-      localStorage.setItem("currectClassId", $(this).attr("data-row-id"));
-      $(location).prop(
-        "href",
-        role === "admin" ? "#editClassPage" : "#classPage"
-      );
-    });
   };
 
   classes.getAll(success);
 };
+
+function attachClickHandler(containerReference, role) {
+  $(`${containerReference} a`).on("click", function () {
+    localStorage.setItem("currectClassId", $(this).attr("data-row-id"));
+    $(location).prop(
+      "href",
+      role === "admin" ? "#editClassPage" : "#classPage"
+    );
+  });
+}
 
 const loadUsersCards = (containerReference, role = "admin") => {
   let success = function (tx, result) {
@@ -453,8 +460,18 @@ const loadUsersCards = (containerReference, role = "admin") => {
     }
 
     function delete_clickHandler() {
-      // localStorage.setItem("currentEventId", $(this).attr("data-row-id"));
-      $(location).prop("href", "#manageUsersPage");
+      let confirmDelete = confirm("Are you sure you want to delete this user?");
+      if (confirmDelete) {
+        let userId = $(this).attr("data-row-id");
+        let success = function (tx, result) {
+          alert("User deleted successfully");
+        };
+        users.deleteUser(userId, success);
+
+        //refresh page
+        location.reload();
+      } else {
+      }
     }
 
     $(`${containerReference} .edit-user`).on("click", edit_clickHandler);

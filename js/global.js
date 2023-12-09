@@ -4,21 +4,33 @@ $(document).ready(function () {
 });
 
 function init() {
-  if (localStorage.getItem("currentUserId")) {
-    $(location).prop("href", "#homePage");
-  }
+  const isLoggedIn = localStorage.getItem("currentUserId");
+  const currentUrl = window.location.href;
+  const baseUrl = [
+    window.location.protocol,
+    "//",
+    window.location.host,
+    window.location.pathname,
+  ].join("");
 
+  if (isLoggedIn) {
+    // Redirect to home page only if the current URL is the base URL
+    if (currentUrl === baseUrl) {
+      $(location).prop("href", "#homePage");
+    }
+    // else stay on the current page
+  }
   //*************** ON CLICK EVENTS ***************
+  // ***** Forms
   $("#addUserBtn").on("click", addUserBtn_click);
   $("#addEventBtn").on("click", addEventBtn_click);
-  $("#addAttendanceBtn").on("click", addAttendanceBtn_click);
   $("#addClassBtn").on("click", addClassBtn_click);
-  $("#loginBtn").on("click", loginBtn_click);
-  $("#dropDatabase").on("click", dropDatabase_click);
-  $(".signOutBtn").on("click", signOutBtn_click);
+  $("#loginForm").submit(loginBtn_click);
   $("#editUserBtn").on("click", editUserBtn_click);
   $("#editClassBtn").on("click", editClassBtn_click);
+
   $(".edit-profile-btn").on("click", editProfileBtn_click);
+  $(".signOutBtn").on("click", signOutBtn_click);
 
   //*************** ON PAGE LOAD EVENTS ***************
   $("#loginPage").on("pageshow", loginPage_show);
@@ -74,7 +86,8 @@ function addClassBtn_click() {
   addClassValidation();
 }
 
-function loginBtn_click() {
+function loginBtn_click(e) {
+  e.preventDefault();
   loginValidation();
 }
 

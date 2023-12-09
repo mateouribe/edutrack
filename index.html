@@ -74,6 +74,7 @@
                 id="login_username"
                 name="login_username"
                 placeholder="Username"
+                autocomplete="username"
               />
             </div>
 
@@ -90,6 +91,7 @@
                 id="login_password"
                 name="login_password"
                 placeholder="···········"
+                autocomplete="current-password"
               />
             </div>
             <button type="submit" id="loginBtn" name="loginBtn">Login</button>
@@ -110,7 +112,6 @@
             <a href="#homePage" class="text-shadow-none">Home</a>
           </li>
           <li><a href="#usersPanelPage">Users</a></li>
-          <li><a href="#attendancePanelPage">Attendance</a></li>
           <li><a href="#classesPanelPage">Classes</a></li>
           <li><a href="#eventsPanelPage">Events</a></li>
           <li class="signOutBtn"><a href="#">Sign out</a></li>
@@ -153,7 +154,6 @@
           <li class="ui-btn-active ui-state-persist">
             <a href="#usersPanelPage" class="text-shadow-none">Users</a>
           </li>
-          <li><a href="#attendancePanelPage">Attendance</a></li>
           <li><a href="#classesPanelPage">Classes</a></li>
           <li><a href="#eventsPanelPage">Events</a></li>
           <li class="signOutBtn"><a href="#">Sign out</a></li>
@@ -209,77 +209,6 @@
       </section>
     </div>
 
-    <!-- Attendace page -->
-    <div id="attendancePanelPage" data-role="page">
-      <!-- Menu -->
-      <div data-role="panel" id="nav-panel" data-display="push" data-theme="a">
-        <ul data-role="listview">
-          <li data-icon="delete">
-            <a href="#" data-rel="close">Close menu</a>
-          </li>
-          <li>
-            <a href="#homePage">Home</a>
-          </li>
-          <li>
-            <a href="#usersPanelPage">Users</a>
-          </li>
-          <li class="ui-btn-active ui-state-persist">
-            <a href="#attendancePanelPage" class="text-shadow-none"
-              >Attendance</a
-            >
-          </li>
-          <li><a href="#classesPanelPage">Classes</a></li>
-          <li><a href="#eventsPanelPage">Events</a></li>
-          <li class="signOutBtn"><a href="#">Sign out</a></li>
-        </ul>
-      </div>
-
-      <section data-role="content m-0 p-0">
-        <!-- Header page -->
-        <div class="header_page">
-          <div>
-            <a href="#nav-panel" class="menu-icon"
-              ><i class="fa-solid fa-bars text-white"></i
-            ></a>
-            <h1 class="text-shadow-none text-white">Attendance</h1>
-            <a
-              class="user-icon text-shadow-none edit-profile-btn underline-none"
-              href="#editUserPage"
-            >
-              <i class="fa-solid fa-gear text-white"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Body page -->
-        <div class="content-container h-100vh">
-          <div class="panel-container admin fullSize">
-            <!-- Add attendance card -->
-            <div class="card-container" id="newAttendanceCard">
-              <img src="./img/addUserIcon.svg" class="card-image" />
-              <h2 class="card-title">New Attendance</h2>
-              <a class="see-more-container" href="#addAttendancePage">
-                <p>See more</p>
-                <span>></span>
-              </a>
-            </div>
-
-            <!-- Add users card -->
-            <div class="card-container" id="manageAttendancesCard">
-              <img src="./img/addUserIcon.svg" class="card-image" />
-              <h2 class="card-title">Manage Attendance</h2>
-              <a class="see-more-container">
-                <p>See more</p>
-                <span>></span>
-              </a>
-            </div>
-          </div>
-
-          <div class="cards-container student">Lolaa</div>
-        </div>
-      </section>
-    </div>
-
     <!-- Classes page -->
     <div id="classesPanelPage" data-role="page">
       <!-- Menu -->
@@ -293,9 +222,6 @@
           </li>
           <li>
             <a href="#usersPanelPage">Users</a>
-          </li>
-          <li>
-            <a href="#attendancePanelPage">Attendance</a>
           </li>
           <li class="ui-btn-active ui-state-persist">
             <a href="#classesPanelPage" class="text-shadow-none">Classes</a>
@@ -371,9 +297,6 @@
             <a href="#usersPanelPage">Users</a>
           </li>
           <li>
-            <a href="#attendancePanelPage">Attendance</a>
-          </li>
-          <li>
             <a href="#classesPanelPage">Classes</a>
           </li>
           <li class="ui-btn-active ui-state-persist">
@@ -437,7 +360,6 @@
           <li class="ui-btn-active ui-state-persist">
             <a href="#usersPanelPage" class="text-shadow-none">Users</a>
           </li>
-          <li><a href="#attendancePanelPage">Attendance</a></li>
           <li><a href="#classesPanelPage">Classes</a></li>
           <li><a href="#eventsPanelPage">Events</a></li>
           <li class="signOutBtn"><a href="#">Sign out</a></li>
@@ -564,13 +486,13 @@
               data-role="fieldcontain"
               class="m-0 p-0 w-full flex-col border-0"
             >
-              <label class="text-shadow-none" for="addUser_zipCode"
+              <label class="text-shadow-none" for="addUser_zipcode"
                 >Zip Code:</label
               >
               <input
                 type="text"
-                id="addUser_zipCode"
-                name="addUser_zipCode"
+                id="addUser_zipcode"
+                name="addUser_zipcode"
                 placeholder="Zip Code"
                 class="plain-background-input"
               />
@@ -641,9 +563,6 @@
           </li>
           <li>
             <a href="#usersPanelPage">Users</a>
-          </li>
-          <li>
-            <a href="#attendancePanelPage">Attendance</a>
           </li>
           <li>
             <a href="#classesPanelPage">Classes</a>
@@ -813,128 +732,6 @@
       </section>
     </div>
 
-    <!-- Add attendance page -->
-    <div id="addAttendancePage" data-role="page">
-      <!-- Menu -->
-      <div data-role="panel" id="nav-panel" data-display="push" data-theme="a">
-        <ul data-role="listview">
-          <li data-icon="delete">
-            <a href="#" data-rel="close">Close menu</a>
-          </li>
-          <li>
-            <a href="#homePage">Home</a>
-          </li>
-          <li>
-            <a href="#usersPanelPage">Users</a>
-          </li>
-          <li class="ui-btn-active ui-state-persist">
-            <a href="#attendancePanelPage" class="text-shadow-none"
-              >Attendance</a
-            >
-          </li>
-          <li><a href="#classesPanelPage">Classes</a></li>
-          <li><a href="#eventsPanelPage">Events</a></li>
-          <li class="signOutBtn"><a href="#">Sign out</a></li>
-        </ul>
-      </div>
-
-      <section data-role="content m-0 p-0">
-        <!-- Header page -->
-        <div class="header_page">
-          <div>
-            <a href="#nav-panel" class="menu-icon"
-              ><i class="fa-solid fa-bars text-white"></i
-            ></a>
-            <h1 class="text-shadow-none text-white">New attendance</h1>
-            <a
-              class="user-icon text-shadow-none edit-profile-btn underline-none"
-              href="#editUserPage"
-            >
-              <i class="fa-solid fa-gear text-white"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Body page -->
-        <div class="content-container">
-          <img src="./img/addUserIcon.svg" class="form-img" />
-          <form id="addAttendanceForm" name="addAttendanceForm">
-            <!-- Class Name -->
-            <div class="m-0 p-0 w-full flex-col border-0">
-              <label class="text-shadow-none" for="addAttendance_class"
-                >Class:</label
-              >
-              <select
-                name="addAttendance_class"
-                id="addAttendance_class"
-                data-native-menu="true"
-              >
-                <option value="web">Web tech</option>
-                <option value="math">Math</option>
-                <option value="english">Enlgish</option>
-              </select>
-            </div>
-
-            <!-- Date Taken -->
-            <div class="m-0 p-0 w-full flex-col border-0">
-              <label class="text-shadow-none" for="addAttendance_dateTaken"
-                >Date Taken:</label
-              >
-              <input
-                type="date"
-                id="addAttendance_dateTaken"
-                name="addAttendance_dateTaken"
-                class="plain-background-input"
-              />
-            </div>
-
-            <!-- List of Users (Static for now) -->
-            <div class="m-0 p-0 w-full flex-col border-0">
-              <label class="text-shadow-none" for="userList"
-                >List of Users:</label
-              >
-              <select
-                multiple
-                name="userList"
-                id="userList"
-                data-native-menu="true"
-              >
-                <!-- Static User List (Replace with dynamic list from your database) -->
-                <option value="user1">User 1</option>
-                <option value="user2">User 2</option>
-                <option value="user3">User 3</option>
-                <!-- Add more users as needed -->
-              </select>
-            </div>
-
-            <!-- Room# -->
-            <div class="m-0 p-0 w-full flex-col border-0">
-              <label class="text-shadow-none" for="addAttendance_roomNumber"
-                >Room #:</label
-              >
-              <input
-                type="text"
-                id="addAttendance_roomNumber"
-                name="addAttendance_roomNumber"
-                placeholder="Room #"
-                class="plain-background-input"
-              />
-            </div>
-
-            <!-- Submit Button -->
-            <button
-              type="submit"
-              class="mt-40 text-shadow-none"
-              id="addAttendanceBtn"
-              name="addAttendanceBtn"
-            >
-              Take Attendance
-            </button>
-          </form>
-        </div>
-      </section>
-    </div>
-
     <!-- Add class page -->
     <div id="addClassPage" data-role="page">
       <!-- Menu -->
@@ -948,9 +745,6 @@
           </li>
           <li>
             <a href="#usersPanelPage">Users</a>
-          </li>
-          <li>
-            <a href="#attendancePanelPage">Attendance</a>
           </li>
           <li class="ui-btn-active ui-state-persist">
             <a href="#classesPanelPage" class="text-shadow-none">Classes</a>
@@ -1080,9 +874,6 @@
             <a href="#usersPanelPage">Users</a>
           </li>
           <li>
-            <a href="#attendancePanelPage">Attendance</a>
-          </li>
-          <li>
             <a href="#classesPanelPage">Classes</a>
           </li>
           <li class="ui-btn-active ui-state-persist">
@@ -1147,9 +938,6 @@
           </li>
           <li>
             <a href="#usersPanelPage">Users</a>
-          </li>
-          <li>
-            <a href="#attendancePanelPage">Attendance</a>
           </li>
           <li class="ui-btn-active ui-state-persist">
             <a href="#classesPanelPage" class="text-shadow-none">Classes</a>
@@ -1225,7 +1013,6 @@
           <li class="ui-btn-active ui-state-persist">
             <a href="#usersPanelPage" class="text-shadow-none">Users</a>
           </li>
-          <li><a href="#attendancePanelPage">Attendance</a></li>
           <li><a href="#classesPanelPage">Classes</a></li>
           <li><a href="#eventsPanelPage">Events</a></li>
           <li class="signOutBtn"><a href="#">Sign out</a></li>
@@ -1271,9 +1058,6 @@
           </li>
           <li>
             <a href="#usersPanelPage">Users</a>
-          </li>
-          <li>
-            <a href="#attendancePanelPage">Attendance</a>
           </li>
           <li class="ui-btn-active ui-state-persist">
             <a href="#classesPanelPage" class="text-shadow-none">Classes</a>
@@ -1324,7 +1108,6 @@
           <li class="ui-btn-active ui-state-persist">
             <a href="#usersPanelPage" class="text-shadow-none">Users</a>
           </li>
-          <li><a href="#attendancePanelPage">Attendance</a></li>
           <li><a href="#classesPanelPage">Classes</a></li>
           <li><a href="#eventsPanelPage">Events</a></li>
           <li class="signOutBtn"><a href="#">Sign out</a></li>
@@ -1451,13 +1234,13 @@
               data-role="fieldcontain"
               class="m-0 p-0 w-full flex-col border-0"
             >
-              <label class="text-shadow-none" for="editUser_zipCode"
+              <label class="text-shadow-none" for="editUser_zipcode"
                 >Zip Code:</label
               >
               <input
                 type="text"
-                id="editUser_zipCode"
-                name="editUser_zipCode"
+                id="editUser_zipcode"
+                name="editUser_zipcode"
                 placeholder="Zip Code"
                 class="plain-background-input"
               />
@@ -1528,9 +1311,6 @@
           </li>
           <li>
             <a href="#usersPanelPage">Users</a>
-          </li>
-          <li>
-            <a href="#attendancePanelPage">Attendance</a>
           </li>
           <li class="ui-btn-active ui-state-persist">
             <a href="#classesPanelPage" class="text-shadow-none">Classes</a>
