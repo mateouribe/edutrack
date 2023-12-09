@@ -114,6 +114,7 @@
           <li><a href="#usersPanelPage">Users</a></li>
           <li><a href="#classesPanelPage">Classes</a></li>
           <li><a href="#eventsPanelPage">Events</a></li>
+          <li><a href="#aboutPage">About us</a></li>
           <li class="signOutBtn"><a href="#">Sign out</a></li>
         </ul>
       </div>
@@ -1431,6 +1432,96 @@
             </button>
           </form>
           <button id="deleteClassBtn" name="deleteClassBtn">Delete</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- +**************************+ ABOUT +***************************-->
+    <!-- About page -->
+    <div id="aboutPage" data-role="page">
+      <!-- Menu -->
+      <div data-role="panel" id="nav-panel" data-display="push" data-theme="a">
+        <ul data-role="listview">
+          <li data-icon="delete">
+            <a href="#" data-rel="close">Close menu</a>
+          </li>
+          <li>
+            <a href="#homePage">Home</a>
+          </li>
+          <li><a href="#usersPanelPage">Users</a></li>
+          <li><a href="#classesPanelPage">Classes</a></li>
+          <li><a href="#eventsPanelPage">Events</a></li>
+          <li class="ui-btn-active ui-state-persist">
+            <a href="#aboutPage" class="text-shadow-none">About us</a>
+          </li>
+          <li class="signOutBtn"><a href="#">Sign out</a></li>
+        </ul>
+      </div>
+
+      <section data-role="content m-0 p-0">
+        <!-- Header page -->
+        <div class="header_page">
+          <div>
+            <h1 class="text-shadow-none text-white">About us</h1>
+            <a href="#nav-panel" class="menu-icon"
+              ><i class="fa-solid fa-bars text-white"></i
+            ></a>
+            <a
+              class="user-icon text-shadow-none edit-profile-btn underline-none"
+              href="#editUserPage"
+            >
+              <i class="fa-solid fa-gear text-white"></i>
+            </a>
+          </div>
+        </div>
+        <div class="content-container about-container">
+          <b>Developers:</b>
+          <ol>
+            <li>Mateo Arismendy Uribe</li>
+            <li>Kin Furigay</li>
+            <li>Quyen Ha</li>
+          </o>
+          <br />
+          <b>Key Functionalities</b>
+          <ol>
+            <li>
+              <b>User Management:</b> The system categorizes users into
+              different roles, such as students, teachers, and admins. Each user
+              type has unique privileges. Students can attend classes,
+              participate in events, and view user profiles. Admins and teachers
+              have elevated permissions, enabling them to create, edit, and
+              delete classes, events, and user profiles.
+            </li>
+            <li>
+              <b>Class Management:</b> EduTrack allows the creation and
+              management of class records, each with details such as class name,
+              description, room number, and scheduling information. This
+              functionality is crucial for organizing the academic structure.
+            </li>
+            <li>
+              <b>Event Management:</b> The platform includes an event management
+              module. Events can be academic or extracurricular, with attributes
+              like title, description, date, cost, type, location, and duration.
+              This feature enriches the educational experience by facilitating
+              diverse activities.
+            </li>
+            <li>
+              <b>Relational Data Handling:</b> The database architecture
+              incorporates tables for users, classes, events, and their
+              interrelations, ensuring seamless management of the many-to-many
+              relationships between users and classes/events.
+            </li>
+            <li>
+              <b>Admin User Creation:</b> A special feature for creating an
+              admin user is included, setting a precedent for system security
+              and administrative control.
+            </li>
+            <li>
+              <b>Database Flexibility: </b> EduTrack includes functionality to
+              drop the database, allowing for system resets or restructuring as
+              needed.
+            </li>
+          </ol>
         </div>
       </section>
     </div>

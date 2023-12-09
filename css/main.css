@@ -231,3 +231,22 @@ i {
   color: var(--main-text-color);
   font-weight: 400;
 }
+
+.about-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 40px;
+  color: var(--main-text-color) !important;
+}
+
+ol {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+}
