@@ -130,3 +130,11 @@
   width: 100%;
   text-align: left;
 }
+
+#deleteClassBtn {
+  margin-top: 20px !important;
+  background-color: white !important;
+  color: var(--main-text-color) !important;
+  border: 1px solid var(--main-text-color) !important;
+  box-shadow: none !important;
+}

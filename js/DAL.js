@@ -117,6 +117,52 @@ let events = {
       tx.executeSql(sql, params, callback, errorHandler);
     });
   },
+
+  checkUserAttendance: function (eventId, userId, callback) {
+    dbOpen.transaction(function (tx) {
+      let sql = "SELECT * FROM user_events WHERE user_id = ? AND event_id = ?";
+      let params = [userId, eventId];
+
+      tx.executeSql(
+        sql,
+        params,
+        function (tx, results) {
+          if (results.rows.length > 0) {
+            callback(true);
+          } else {
+            callback(false);
+          }
+        },
+        errorHandler
+      );
+    });
+  },
+
+  attendEvent: function (eventId, userId, callback) {
+    dbOpen.transaction(function (tx) {
+      let sql = "INSERT INTO user_events (user_id, event_id) VALUES (?, ?)";
+      let params = [userId, eventId];
+
+      tx.executeSql(sql, params, callback, errorHandler);
+    });
+  },
+
+  getEventAttendees: function (eventId, callback) {
+    dbOpen.transaction(function (tx) {
+      let sql =
+        "SELECT users.id, users.fullName, users.role FROM users INNER JOIN user_events ON users.id = user_events.user_id WHERE user_events.event_id = ?";
+      let params = [eventId];
+
+      tx.executeSql(
+        sql,
+        params,
+        function (tx, results) {
+          callback(results); // Pass the actual results to the callback
+        },
+        errorHandler
+      );
+    });
+  },
 };
 
 let classes = {
@@ -196,6 +242,15 @@ let classes = {
         classObj.endDate,
         classId,
       ];
+
+      tx.executeSql(sql, params, callback, errorHandler);
+    });
+  },
+
+  deleteClass: function (id, callback) {
+    dbOpen.transaction(function (tx) {
+      let sql = "DELETE FROM classes WHERE id = ?";
+      let params = [id];
 
       tx.executeSql(sql, params, callback, errorHandler);
     });

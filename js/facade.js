@@ -31,6 +31,7 @@ const addUserValidation = () => {
     let success = function (tx, result) {
       alert("User added successfully");
       $(location).prop("href", "#homePage");
+      location.reload();
     };
 
     users.addUser(user, success);
@@ -61,11 +62,9 @@ const addEventValidation = () => {
 
     let success = function (tx, result) {
       alert("Event added successfully");
-      $(location).prop("href", "#homePage");
+      window.location.href = "#homePage";
+      location.reload();
     };
-
-    // console.log(JSON.stringify(event));
-
     events.addEvent(event, success);
   } else {
     console.error("Add event form is invalid");
@@ -100,7 +99,8 @@ const addClassValidation = () => {
 
     let success = function (tx, result) {
       alert("Class added successfully");
-      $(location).prop("href", "#homePage");
+      window.location.href = "#homePage";
+      location.reload();
     };
 
     classes.addClass(classObj, success);
@@ -135,7 +135,8 @@ const editUserValidation = () => {
 
     let success = function (tx, result) {
       alert("User edited successfully");
-      $(location).prop("href", "#usersPanelPage");
+      window.location.href = "#usersPanelPage";
+      location.reload();
     };
 
     users.editUser(userId, user, success);
@@ -165,7 +166,8 @@ const editClassValidation = () => {
 
     let success = function (tx, result) {
       alert("Class edited successfully");
-      $(location).prop("href", "#classesPanelPage");
+      window.location.href = "#classesPanelPage";
+      location.reload();
     };
 
     classes.editClass(classId, classObj, success);
@@ -207,7 +209,8 @@ const loginValidation = () => {
         });
 
         // Redirect to the homepage
-        $(location).prop("href", "#homePage");
+        window.location.href = "#homePage";
+        location.reload();
       }
       //Unsuccessfull login
       else {
@@ -223,7 +226,7 @@ const loginValidation = () => {
 
 const signOut = () => {
   localStorage.clear();
-  $(location).prop("href", "#loginPage");
+  window.location.href = "#loginPage";
 };
 
 // ********************************************** Load functions
@@ -233,6 +236,7 @@ const setScreensPermissions = () => {
   $(".admin, .student, .teacher").hide();
 
   let authorizationLevel = localStorage.getItem("authorizationLevel");
+
   //Student
   if (authorizationLevel === null || authorizationLevel === "0") {
     $(".student").show();
@@ -312,7 +316,8 @@ const loadEventsCards = (containerReference) => {
 
     function clickHandler() {
       localStorage.setItem("currentEventId", $(this).attr("data-row-id"));
-      $(location).prop("href", "#eventPage");
+      window.location.href = "#eventPage";
+      location.reload();
     }
 
     $(`${containerReference} .see-more-container`).on("click", clickHandler);
@@ -456,7 +461,8 @@ const loadUsersCards = (containerReference, role = "admin") => {
 
     function edit_clickHandler() {
       localStorage.setItem("currentEditUserId", $(this).attr("data-row-id"));
-      $(location).prop("href", "#editUserPage");
+      window.location.href = "#editUserPage";
+      location.reload();
     }
 
     function delete_clickHandler() {
@@ -487,31 +493,83 @@ const loadEventPage = () => {
 
   let success = function (tx, result) {
     let event = result.rows[0];
+    let userId = localStorage.getItem("currentUserId");
 
-    $("#eventPage_img").attr(
-      "src",
-      event.type === "academic"
-        ? "../img/academicActivity.png"
-        : event.type === "sports"
-        ? "../img/sportsActivity.png"
-        : event.type === "cultural"
-        ? "../img/culturalActivity.png"
-        : event.type === "social"
-        ? "../img/socialActivity.png.png"
-        : event.type === "fundraising"
-        ? "../img/fundraisingActivity.png"
-        : undefined
-    );
+    events.checkUserAttendance(eventId, userId, function (isAttending) {
+      let buttonText;
+      if (isAttending) {
+        buttonText = "You are attending this event!";
+        $("#assistEventButton").prop("disabled", true);
+      } else {
+        buttonText = "Attend event";
+        $("#assistEventButton").prop("disabled", false);
+      }
 
-    $("#eventPage_title").text(event.title);
-    $("#eventPage_description").text(event.description);
-    $("#eventPage_date").text("📅 " + event.date);
-    $("#eventPage_cost").text(event.cost > 0 ? "💵 $" + event.cost : "FREE");
-    $("#eventPage_type").text(
-      event.type.charAt(0).toUpperCase() + event.type.slice(1)
-    );
-    $("#eventPage_location").text("📍 " + event.location);
-    $("#eventPage_duration").text("⏳ " + event.duration);
+      $("#eventPage_img").attr(
+        "src",
+        event.type === "academic"
+          ? "../img/academicActivity.png"
+          : event.type === "sports"
+          ? "../img/sportsActivity.png"
+          : event.type === "cultural"
+          ? "../img/culturalActivity.png"
+          : event.type === "social"
+          ? "../img/socialActivity.png.png"
+          : event.type === "fundraising"
+          ? "../img/fundraisingActivity.png"
+          : undefined
+      );
+
+      $("#eventPage_title").text(event.title);
+      $("#eventPage_description").text(event.description);
+      $("#eventPage_date").text("📅 " + event.date);
+      $("#eventPage_cost").text(event.cost > 0 ? "💵 $" + event.cost : "FREE");
+      $("#eventPage_type").text(
+        event.type.charAt(0).toUpperCase() + event.type.slice(1)
+      );
+      $("#eventPage_location").text("📍 " + event.location);
+      $("#eventPage_duration").text("⏳ " + event.duration);
+      $("#assistEventButton").text(buttonText);
+
+      $("#assistEventButton")
+        .off("click")
+        .on("click", function () {
+          if (!isAttending) {
+            let success = function (tx, result) {
+              alert("You are now attending this event!");
+              window.location.href = "#homePage";
+              location.reload();
+            };
+
+            events.attendEvent(eventId, userId, success);
+          } else {
+            alert("You are already attending this event!");
+          }
+        });
+
+      events.getEventAttendees(eventId, function (results) {
+        console.log("Attendees results:", results);
+
+        if (results && results.rows && results.rows.length > 0) {
+          let attendees = results.rows;
+          let tableHtml = "";
+          for (let i = 0; i < attendees.length; i++) {
+            tableHtml += `<li>
+            <img src="./img/blackUserIcon.svg" />
+            <div class="user-info-container">
+              <p class="user-name">${attendees[i].fullName}</p>
+              <p class="user-role">${attendees[i].role}</p>
+            </div>
+          </li>`;
+          }
+
+          $("#attendeesTable").html(tableHtml);
+        } else {
+          console.error("No attendees data found");
+          $("#attendeesTable").html("<li>No one is attending for now.</li>");
+        }
+      });
+    });
   };
 
   events.getEventById(eventId, success);
@@ -551,7 +609,8 @@ const loadClassPage = () => {
           if (!isAttending) {
             let success = function (tx, result) {
               alert("You are now taking this class!");
-              $(location).prop("href", "#classesPanelPage");
+              window.location.href = "#classesPanelPage";
+              location.reload();
             };
 
             classes.takeClass(classId, userId, success);
@@ -599,4 +658,18 @@ const loadEditClassPage = () => {
   };
 
   classes.getClassById(classId, success);
+};
+
+const handleDeleteClass = () => {
+  let confirmDelete = confirm("Are you sure you want to delete this class?");
+  if (confirmDelete) {
+    let classId = localStorage.getItem("currectClassId");
+    let success = function (tx, result) {
+      alert("Class deleted successfully");
+      window.location.href = "#classesPanelPage";
+      location.reload();
+    };
+    classes.deleteClass(classId, success);
+  } else {
+  }
 };

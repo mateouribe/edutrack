@@ -60,7 +60,7 @@ let DB = {
         "user_id INTEGER NOT NULL," +
         "class_id INTEGER NOT NULL," +
         "PRIMARY KEY (user_id, class_id)," +
-        "FOREIGN KEY(user_id) REFERENCES user(id)," +
+        "FOREIGN KEY(user_id) REFERENCES users(id)," +
         "FOREIGN KEY(class_id) REFERENCES classes(id));";
 
       // Create 'events' table
@@ -75,24 +75,13 @@ let DB = {
         "location VARCHAR(50) NOT NULL," +
         "duration VARCHAR(50) NOT NULL);";
 
-      // Create 'attendance' table
-      let sqlAttendance =
-        "CREATE TABLE IF NOT EXISTS attendances(" +
-        "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
-        "classId INTEGER NOT NULL," +
-        "dateTaken DATE NOT NULL," +
-        "roomNumber VARCHAR(10) NOT NULL," +
-        "FOREIGN KEY(classId) REFERENCES classes(id));";
-
-      // Create 'attendance_students' table for many-to-many relationship
-      let sqlAttendanceStudents =
-        "CREATE TABLE IF NOT EXISTS attendance_students(" +
-        "attendance_id INTEGER NOT NULL," +
-        "student_id INTEGER NOT NULL," +
-        "present BOOLEAN NOT NULL," +
-        "PRIMARY KEY (attendance_id, student_id)," +
-        "FOREIGN KEY(attendance_id) REFERENCES attendance(id)," +
-        "FOREIGN KEY(student_id) REFERENCES user(id));";
+      let sqlUserEvents =
+        "CREATE TABLE IF NOT EXISTS user_events(" +
+        "user_id INTEGER NOT NULL," +
+        "event_id INTEGER NOT NULL," +
+        "PRIMARY KEY (user_id, event_id)," +
+        "FOREIGN KEY(user_id) REFERENCES users(id)," +
+        "FOREIGN KEY(event_id) REFERENCES events(id));";
 
       // Execute the SQL statements to create tables
       tx.executeSql(
@@ -130,23 +119,11 @@ let DB = {
         },
         errorHandler
       );
-
       tx.executeSql(
-        sqlAttendance,
+        sqlUserEvents,
         [],
         function () {
-          console.info("Success: 'attendances' table created successfully");
-        },
-        errorHandler
-      );
-
-      tx.executeSql(
-        sqlAttendanceStudents,
-        [],
-        function () {
-          console.info(
-            "Success: 'attendance_students' table created successfully"
-          );
+          console.info("Success: 'user_events' table created successfully");
         },
         errorHandler
       );
@@ -160,17 +137,27 @@ let DB = {
       // Format the date as YYYY-MM-DD for SQLite
       let formattedDateOfBirth = dateOfBirth.toISOString().split("T")[0];
 
+      "CREATE TABLE IF NOT EXISTS users(" +
+        "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+        "role VARCHAR(20) NOT NULL," +
+        "fullName VARCHAR(100) NOT NULL," +
+        "dateOfBirth Date NOT NULL," +
+        "phoneNumber VARCHAR(10) NOT NULL," +
+        "address VARCHAR(100) NOT NULL," +
+        "zipcode VARCHAR(100) NOT NULL," +
+        "username VARCHAR(30) UNIQUE NOT NULL," +
+        "password VARCHAR(30) NOT NULL);";
       let sql =
-        "INSERT INTO users (username, password, role, fullName, dateOfBirth, phoneNumber, address, zipcode) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        "INSERT INTO users (role, fullName, dateOfBirth, phoneNumber, address, zipcode, username, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
       let params = [
-        "admin",
-        "adminPassword",
         "admin",
         "Matteo Kin Quyen",
         formattedDateOfBirth,
         "1231231234",
         "University Av. 190",
-        "N2N2N2",
+        "N2N 2N2",
+        "admin",
+        "adminPassword",
       ];
 
       tx.executeSql(

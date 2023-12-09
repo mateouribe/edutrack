@@ -20,18 +20,30 @@ function init() {
     }
     // else stay on the current page
   }
+
   //*************** ON CLICK EVENTS ***************
   // ***** Forms
-  $("#addUserBtn").on("click", addUserBtn_click);
-  $("#addEventBtn").on("click", addEventBtn_click);
-  $("#addClassBtn").on("click", addClassBtn_click);
+  $("#addUserForm").submit(function (event) {
+    addUserBtn_click(event);
+  });
+  $("#addEventForm").submit(function (event) {
+    addEventBtn_click(event);
+  });
+  $("#addClassForm").submit(function (event) {
+    addClassBtn_click(event);
+  });
   $("#loginForm").submit(loginBtn_click);
-  $("#editUserBtn").on("click", editUserBtn_click);
-  $("#editClassBtn").on("click", editClassBtn_click);
+  $("#editUserForm").submit(function (event) {
+    editUserBtn_click(event);
+  });
+  $("#editClassForm").submit(function (event) {
+    editClassBtn_click(event);
+  });
 
   $(".edit-profile-btn").on("click", editProfileBtn_click);
   $(".signOutBtn").on("click", signOutBtn_click);
-
+  $("#deleteClassBtn").on("click", deleteClassBtn_click);
+  $("#dropDatabase").on("click", dropDatabase_click);
   //*************** ON PAGE LOAD EVENTS ***************
   $("#loginPage").on("pageshow", loginPage_show);
   $(
@@ -70,11 +82,13 @@ function initDB() {
 }
 
 //ON CLICK EVENT HANDLERS
-function addUserBtn_click() {
+function addUserBtn_click(event) {
+  event.preventDefault();
   addUserValidation();
 }
 
-function addEventBtn_click() {
+function addEventBtn_click(event) {
+  event.preventDefault();
   addEventValidation();
 }
 
@@ -82,7 +96,8 @@ function addAttendanceBtn_click() {
   addAttendanceValidation();
 }
 
-function addClassBtn_click() {
+function addClassBtn_click(event) {
+  event.preventDefault();
   addClassValidation();
 }
 
@@ -99,11 +114,17 @@ function signOutBtn_click() {
   signOut();
 }
 
-function editUserBtn_click() {
+function deleteClassBtn_click() {
+  handleDeleteClass();
+}
+
+function editUserBtn_click(event) {
+  event.preventDefault();
   editUserValidation();
 }
 
-function editClassBtn_click() {
+function editClassBtn_click(event) {
+  event.preventDefault();
   editClassValidation();
 }
 
